@@ -44,6 +44,27 @@ class Book {
     });
   };
   
-  
-  
   document.getElementById("add-bookForm").addEventListener("submit", addBook);
+
+ 
+const searchButton = document.getElementById('Searchbtn');
+searchButton.addEventListener('click', function() {
+    const tergetsearch = document.getElementById('searchInput').value.trim();
+    const results = linearSearch(Library, 'title',tergetsearch);
+    if (results) {
+      return alert(`Book found: ${results.title} by ${results.author}, Genre: ${results.genre}`);
+    } else {
+        console.log("Book not found.");
+    }
+  function linearSearch(arr,key,value){
+    for(let i=0;i<arr.length;i++){
+      if(arr[i][key] === value){
+        return arr[i]
+      }
+    }
+    return null;
+  } 
+  }
+  );
+
+  
